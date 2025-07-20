@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>LAP Builder</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      display: grid;
+      grid-template-columns: 1fr 1fr 300px;
+      height: 100vh;
+    }
+    #editor, #preview, #help {
+      padding: 20px;
+      overflow-y: auto;
+    }
+    #editor { background: #f7fafc; border-right: 1px solid #ddd; }
+    #preview { background: #ffffff; border-right: 1px solid #ddd; }
+    
+    /* Improved Help Guide Styles */
+    #help {
+      background: #fffbe6;
+      font-size: 15px;
+      padding: 20px;
+      overflow-y: auto;
+      line-height: 1.6;
+    }
+    #help h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    #help h3 {
+      font-size: 17px;
+      margin-top: 25px;
+      margin-bottom: 10px;
+      color: #333;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 4px;
+    }
+    #help ul {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 15px;
+    }
+    #help li {
+      margin-bottom: 8px;
+      padding-left: 10px;
+      border-left: 3px solid #ccc;
+    }
+    #help code {
+      background: #f0f0f0;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    textarea {
+      width: 100%;
+      height: 65%;
+      padding: 10px;
+      font-family: monospace;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      resize: none;
+      background: #ffffff;
+    }
+    button {
+      margin-top: 10px;
+      margin-right: 5px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 6px;
+      background: #4f46e5;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    button:hover { background: #4338ca; }
+    h2 { margin-top: 0; }
+    #output {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    code, pre {
+      background: #eee;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .columns { display: flex; gap: 20px; }
+    .column { flex: 1; }
+    .lap-note, .lap-warning, .lap-success {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+    }
+    .lap-note {
+      background: #e0f7fa;
+      border-left: 5px solid #00796b;
+    }
+    .lap-warning {
+      background: #ffe5e5;
+      border-left: 5px solid #c62828;
+    }
+    .lap-success {
+      background: #e0ffe0;
+      border-left: 5px solid #2e7d32;
+    }
+    .lap-center { text-align: center; }
+    .lap-section {
+      padding: 30px 20px;
+      margin: 20px 0;
+      background: #f0f0f0;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Editor -->
+  <div id="editor">
+    <h2>LAP Editor</h2>
+    <textarea id="lapCode">
+<lap-page>
+  <lap-title>My LAP Page</lap-title>
+  <lap-alert message="Welcome to LAP!" />
+
+  <lap-header>Hello from LAP</lap-header>
+  <lap-subtitle>Build websites with easy custom tags</lap-subtitle>
+
+  <lap-section>
+    <lap-text>This is a section with text, an image, and a video.</lap-text>
+    <lap-image src="https://placekitten.com/400/200" />
+    <lap-video src="https://www.w3schools.com/html/mov_bbb.mp4" />
+    <lap-note>This is a helpful note.</lap-note>
+    <lap-warning>Warning: Be careful!</lap-warning>
+    <lap-success>Success! Everything is good.</lap-success>
+  </lap-section>
+
+  <lap-column>
+    <lap-box><lap-text>Left side content</lap-text></lap-box>
+    <lap-box><lap-text>Right side content</lap-text></lap-box>
+  </lap-column>
+
+  <lap-youtube src="https://www.youtube.com/embed/dQw4w9WgXcQ" />
+  <lap-embed-website src="https://example.com" />
+  <lap-footer>© 2025 Built in LAP</lap-footer>
+</lap-page>
+    </textarea>
+    <br>
+    <button onclick="renderLAP()">Render</button>
+    <button onclick="downloadSite()">Download</button>
+  </div>
+
+  <!-- Preview -->
+  <div id="preview">
+    <h2>Live Preview</h2>
+    <div id="output"></div>
+  </div>
+
+  <!-- Help Guide -->
+  <div id="help">
+    <h2>📘 LAP Language Help</h2>
+
+    <h3>🔤 Text & Headings</h3>
+    <ul>
+      <li><code>&lt;lap-header&gt;</code> – Big title (H1)</li>
+      <li><code>&lt;lap-subtitle&gt;</code> – Subheading (H2)</li>
+      <li><code>&lt;lap-text&gt;</code> – Paragraph text</li>
+      <li><code>&lt;lap-code&gt;</code> – Displays code block</li>
+      <li><code>&lt;lap-html&gt;</code> – Allows raw HTML</li>
+    </ul>
+
+    <h3>🖼️ Media & Embeds</h3>
+    <ul>
+      <li><code>&lt;lap-image src="..." /&gt;</code> – Adds an image</li>
+      <li><code>&lt;lap-video src="..." /&gt;</code> – Video file (MP4, etc.)</li>
+      <li><code>&lt;lap-youtube src="..." /&gt;</code> – Embed YouTube video</li>
+      <li><code>&lt;lap-embed-website src="..." /&gt;</code> – Embed any website</li>
+    </ul>
+
+    <h3>📦 Layout & Structure</h3>
+    <ul>
+      <li><code>&lt;lap-page&gt;</code> – Wraps entire site</li>
+      <li><code>&lt;lap-section&gt;</code> – Padded content block</li>
+      <li><code>&lt;lap-column&gt;</code> – Two side-by-side boxes</li>
+      <li><code>&lt;lap-box&gt;</code> – Box with content</li>
+      <li><code>&lt;lap-center&gt;</code> – Center-aligns content</li>
+      <li><code>&lt;lap-divider /&gt;</code> – Horizontal line</li>
+      <li><code>&lt;lap-spacer /&gt;</code> – Vertical space</li>
+    </ul>
+
+    <h3>📢 Alerts & Messages</h3>
+    <ul>
+      <li><code>&lt;lap-alert message="..." /&gt;</code> – Shows popup on page load</li>
+      <li><code>&lt;lap-note&gt;</code> – Blue info box</li>
+      <li><code>&lt;lap-warning&gt;</code> – Red warning box</li>
+      <li><code>&lt;lap-success&gt;</code> – Green success box</li>
+    </ul>
+
+    <h3>🔧 Meta & Extras</h3>
+    <ul>
+      <li><code>&lt;lap-title&gt;</code> – Sets page tab title</li>
+      <li><code>&lt;lap-footer&gt;</code> – Page footer</li>
+    </ul>
+  </div>
+
+  <!-- Engine -->
+  <script>
+    function renderLAP() {
+      let code = document.getElementById("lapCode").value;
+
+      const alertMatch = code.match(/<lap-alert message="(.*?)"\s*\/?>/);
+      if (alertMatch) {
+        alert(alertMatch[1]);
+        code = code.replace(alertMatch[0], '');
+      }
+
+      const titleMatch = code.match(/<lap-title>(.*?)<\/lap-title>/);
+      if (titleMatch) {
+        document.title = titleMatch[1];
+        code = code.replace(titleMatch[0], '');
+      }
+
+      code = code
+        .replace(/<lap-page>/g, '<div>')
+        .replace(/<\/lap-page>/g, '</div>')
+        .replace(/<lap-header>(.*?)<\/lap-header>/g, '<h1>$1</h1>')
+        .replace(/<lap-subtitle>(.*?)<\/lap-subtitle>/g, '<h2>$1</h2>')
+        .replace(/<lap-footer>(.*?)<\/lap-footer>/g, '<footer style="margin-top:20px;">$1</footer>')
+        .replace(/<lap-text>(.*?)<\/lap-text>/g, '<p>$1</p>')
+        .replace(/<lap-code>(.*?)<\/lap-code>/gs, '<pre><code>$1</code></pre>')
+        .replace(/<lap-html>(.*?)<\/lap-html>/gs, '$1')
+        .replace(/<lap-image src="(.*?)"\s*\/?>/g, '<img src="$1" style="max-width:100%; border-radius:6px;" />')
+        .replace(/<lap-video src="(.*?)"\s*\/?>/g, '<video src="$1" controls width="100%"></video>')
+        .replace(/<lap-youtube src="(.*?)"\s*\/?>/g, '<iframe width="100%" height="300" src="$1" frameborder="0" allowfullscreen></iframe>')
+        .replace(/<lap-embed-website src="(.*?)"\s*\/?>/g, '<iframe src="$1" width="100%" height="400" frameborder="0"></iframe>')
+        .replace(/<lap-box>(.*?)<\/lap-box>/gs, '<div style="border:1px solid #ddd; padding:10px; border-radius:6px;">$1</div>')
+        .replace(/<lap-note>(.*?)<\/lap-note>/gs, '<div class="lap-note">$1</div>')
+        .replace(/<lap-warning>(.*?)<\/lap-warning>/gs, '<div class="lap-warning">$1</div>')
+        .replace(/<lap-success>(.*?)<\/lap-success>/gs, '<div class="lap-success">$1</div>')
+        .replace(/<lap-section>(.*?)<\/lap-section>/gs, '<div class="lap-section">$1</div>')
+        .replace(/<lap-center>(.*?)<\/lap-center>/gs, '<div class="lap-center">$1</div>')
+        .replace(/<lap-divider\s*\/?>/g, '<hr style="margin:20px 0;" />')
+        .replace(/<lap-spacer\s*\/?>/g, '<div style="height:30px;"></div>')
+        .replace(/<lap-column>(.*?)<\/lap-column>/gs, (_, content) => {
+          const cols = content.match(/<lap-box>(.*?)<\/lap-box>/gs) || [];
+          return `<div class="columns">${cols.map(c => `<div class="column">${c}</div>`).join('')}</div>`;
+        });
+
+      document.getElementById("output").innerHTML = code;
+    }
+
+    function downloadSite() {
+      const html = `
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>${document.title}</title></head>
+<body>
+${document.getElementById("output").innerHTML}
+</body>
+</html>
+      `;
+      const blob = new Blob([html], { type: "text/html" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "lap-site.html";
+      a.click();
+    }
+
+    renderLAP();
+  </script>
+
+</body>
+</html>
