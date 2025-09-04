@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>LAP Builder</title>
+  <title>losa Builder</title>
   <style>
     * { box-sizing: border-box; }
     body {
@@ -94,25 +94,25 @@
     }
     .columns { display: flex; gap: 20px; }
     .column { flex: 1; }
-    .lap-note, .lap-warning, .lap-success {
+    .losa-note, .losa-warning, .losa-success {
       padding: 10px;
       margin: 10px 0;
       border-radius: 6px;
     }
-    .lap-note {
+    .losa-note {
       background: #e0f7fa;
       border-left: 5px solid #00796b;
     }
-    .lap-warning {
+    .losa-warning {
       background: #ffe5e5;
       border-left: 5px solid #c62828;
     }
-    .lap-success {
+    .losa-success {
       background: #e0ffe0;
       border-left: 5px solid #2e7d32;
     }
-    .lap-center { text-align: center; }
-    .lap-section {
+    .losa-center { text-align: center; }
+    .losa-section {
       padding: 30px 20px;
       margin: 20px 0;
       background: #f0f0f0;
@@ -124,36 +124,36 @@
 
   <!-- Editor -->
   <div id="editor">
-    <h2>LAP Editor</h2>
-    <textarea id="lapCode">
-<lap-page>
-  <lap-title>My LAP Page</lap-title>
-  <lap-alert message="Welcome to LAP!" />
+    <h2>losa Editor</h2>
+    <textarea id="losaCode">
+<losa-page>
+  <losa-title>My losa Page</losa-title>
+  <losa-alert message="Welcome to losa!" />
 
-  <lap-header>Hello from LAP</lap-header>
-  <lap-subtitle>Build websites with easy custom tags</lap-subtitle>
+  <losa-header>Hello from losa</losa-header>
+  <losa-subtitle>Build websites with easy custom tags</losa-subtitle>
 
-  <lap-section>
-    <lap-text>This is a section with text, an image, and a video.</lap-text>
-    <lap-image src="https://placekitten.com/400/200" />
-    <lap-video src="https://www.w3schools.com/html/mov_bbb.mp4" />
-    <lap-note>This is a helpful note.</lap-note>
-    <lap-warning>Warning: Be careful!</lap-warning>
-    <lap-success>Success! Everything is good.</lap-success>
-  </lap-section>
+  <losa-section>
+    <losa-text>This is a section with text, an image, and a video.</losa-text>
+    <losa-image src="https://placekitten.com/400/200" />
+    <losa-video src="https://www.w3schools.com/html/mov_bbb.mp4" />
+    <losa-note>This is a helpful note.</losa-note>
+    <losa-warning>Warning: Be careful!</losa-warning>
+    <losa-success>Success! Everything is good.</losa-success>
+  </losa-section>
 
-  <lap-column>
-    <lap-box><lap-text>Left side content</lap-text></lap-box>
-    <lap-box><lap-text>Right side content</lap-text></lap-box>
-  </lap-column>
+  <losa-column>
+    <losa-box><losa-text>Left side content</losa-text></losa-box>
+    <losa-box><losa-text>Right side content</losa-text></losa-box>
+  </losa-column>
 
-  <lap-youtube src="https://www.youtube.com/embed/dQw4w9WgXcQ" />
-  <lap-embed-website src="https://example.com" />
-  <lap-footer>© 2025 Built in LAP</lap-footer>
-</lap-page>
+  <losa-youtube src="https://www.youtube.com/embed/dQw4w9WgXcQ" />
+  <losa-embed-website src="https://example.com" />
+  <losa-footer>© 2025 Built in losa</losa-footer>
+</losa-page>
     </textarea>
     <br>
-    <button onclick="renderLAP()">Render</button>
+    <button onclick="renderlosa()">Render</button>
     <button onclick="downloadSite()">Download</button>
   </div>
 
@@ -165,91 +165,91 @@
 
   <!-- Help Guide -->
   <div id="help">
-    <h2>📘 LAP Language Help</h2>
+    <h2>📘 losa Language Help</h2>
 
     <h3>🔤 Text & Headings</h3>
     <ul>
-      <li><code>&lt;lap-header&gt;</code> – Big title (H1)</li>
-      <li><code>&lt;lap-subtitle&gt;</code> – Subheading (H2)</li>
-      <li><code>&lt;lap-text&gt;</code> – Paragraph text</li>
-      <li><code>&lt;lap-code&gt;</code> – Displays code block</li>
-      <li><code>&lt;lap-html&gt;</code> – Allows raw HTML</li>
+      <li><code>&lt;losa-header&gt;</code> – Big title (H1)</li>
+      <li><code>&lt;losa-subtitle&gt;</code> – Subheading (H2)</li>
+      <li><code>&lt;losa-text&gt;</code> – Paragraph text</li>
+      <li><code>&lt;losa-code&gt;</code> – Displays code block</li>
+      <li><code>&lt;losa-html&gt;</code> – Allows raw HTML</li>
     </ul>
 
     <h3>🖼️ Media & Embeds</h3>
     <ul>
-      <li><code>&lt;lap-image src="..." /&gt;</code> – Adds an image</li>
-      <li><code>&lt;lap-video src="..." /&gt;</code> – Video file (MP4, etc.)</li>
-      <li><code>&lt;lap-youtube src="..." /&gt;</code> – Embed YouTube video</li>
-      <li><code>&lt;lap-embed-website src="..." /&gt;</code> – Embed any website</li>
+      <li><code>&lt;losa-image src="..." /&gt;</code> – Adds an image</li>
+      <li><code>&lt;losa-video src="..." /&gt;</code> – Video file (MP4, etc.)</li>
+      <li><code>&lt;losa-youtube src="..." /&gt;</code> – Embed YouTube video</li>
+      <li><code>&lt;losa-embed-website src="..." /&gt;</code> – Embed any website</li>
     </ul>
 
     <h3>📦 Layout & Structure</h3>
     <ul>
-      <li><code>&lt;lap-page&gt;</code> – Wraps entire site</li>
-      <li><code>&lt;lap-section&gt;</code> – Padded content block</li>
-      <li><code>&lt;lap-column&gt;</code> – Two side-by-side boxes</li>
-      <li><code>&lt;lap-box&gt;</code> – Box with content</li>
-      <li><code>&lt;lap-center&gt;</code> – Center-aligns content</li>
-      <li><code>&lt;lap-divider /&gt;</code> – Horizontal line</li>
-      <li><code>&lt;lap-spacer /&gt;</code> – Vertical space</li>
+      <li><code>&lt;losa-page&gt;</code> – Wraps entire site</li>
+      <li><code>&lt;losa-section&gt;</code> – Padded content block</li>
+      <li><code>&lt;losa-column&gt;</code> – Two side-by-side boxes</li>
+      <li><code>&lt;losa-box&gt;</code> – Box with content</li>
+      <li><code>&lt;losa-center&gt;</code> – Center-aligns content</li>
+      <li><code>&lt;losa-divider /&gt;</code> – Horizontal line</li>
+      <li><code>&lt;losa-spacer /&gt;</code> – Vertical space</li>
     </ul>
 
     <h3>📢 Alerts & Messages</h3>
     <ul>
-      <li><code>&lt;lap-alert message="..." /&gt;</code> – Shows popup on page load</li>
-      <li><code>&lt;lap-note&gt;</code> – Blue info box</li>
-      <li><code>&lt;lap-warning&gt;</code> – Red warning box</li>
-      <li><code>&lt;lap-success&gt;</code> – Green success box</li>
+      <li><code>&lt;losa-alert message="..." /&gt;</code> – Shows popup on page load</li>
+      <li><code>&lt;losa-note&gt;</code> – Blue info box</li>
+      <li><code>&lt;losa-warning&gt;</code> – Red warning box</li>
+      <li><code>&lt;losa-success&gt;</code> – Green success box</li>
     </ul>
 
     <h3>🔧 Meta & Extras</h3>
     <ul>
-      <li><code>&lt;lap-title&gt;</code> – Sets page tab title</li>
-      <li><code>&lt;lap-footer&gt;</code> – Page footer</li>
+      <li><code>&lt;losa-title&gt;</code> – Sets page tab title</li>
+      <li><code>&lt;losa-footer&gt;</code> – Page footer</li>
     </ul>
   </div>
 
   <!-- Engine -->
   <script>
-    function renderLAP() {
-      let code = document.getElementById("lapCode").value;
+    function renderlosa() {
+      let code = document.getElementById("losaCode").value;
 
-      const alertMatch = code.match(/<lap-alert message="(.*?)"\s*\/?>/);
+      const alertMatch = code.match(/<losa-alert message="(.*?)"\s*\/?>/);
       if (alertMatch) {
         alert(alertMatch[1]);
         code = code.replace(alertMatch[0], '');
       }
 
-      const titleMatch = code.match(/<lap-title>(.*?)<\/lap-title>/);
+      const titleMatch = code.match(/<losa-title>(.*?)<\/losa-title>/);
       if (titleMatch) {
         document.title = titleMatch[1];
         code = code.replace(titleMatch[0], '');
       }
 
       code = code
-        .replace(/<lap-page>/g, '<div>')
-        .replace(/<\/lap-page>/g, '</div>')
-        .replace(/<lap-header>(.*?)<\/lap-header>/g, '<h1>$1</h1>')
-        .replace(/<lap-subtitle>(.*?)<\/lap-subtitle>/g, '<h2>$1</h2>')
-        .replace(/<lap-footer>(.*?)<\/lap-footer>/g, '<footer style="margin-top:20px;">$1</footer>')
-        .replace(/<lap-text>(.*?)<\/lap-text>/g, '<p>$1</p>')
-        .replace(/<lap-code>(.*?)<\/lap-code>/gs, '<pre><code>$1</code></pre>')
-        .replace(/<lap-html>(.*?)<\/lap-html>/gs, '$1')
-        .replace(/<lap-image src="(.*?)"\s*\/?>/g, '<img src="$1" style="max-width:100%; border-radius:6px;" />')
-        .replace(/<lap-video src="(.*?)"\s*\/?>/g, '<video src="$1" controls width="100%"></video>')
-        .replace(/<lap-youtube src="(.*?)"\s*\/?>/g, '<iframe width="100%" height="300" src="$1" frameborder="0" allowfullscreen></iframe>')
-        .replace(/<lap-embed-website src="(.*?)"\s*\/?>/g, '<iframe src="$1" width="100%" height="400" frameborder="0"></iframe>')
-        .replace(/<lap-box>(.*?)<\/lap-box>/gs, '<div style="border:1px solid #ddd; padding:10px; border-radius:6px;">$1</div>')
-        .replace(/<lap-note>(.*?)<\/lap-note>/gs, '<div class="lap-note">$1</div>')
-        .replace(/<lap-warning>(.*?)<\/lap-warning>/gs, '<div class="lap-warning">$1</div>')
-        .replace(/<lap-success>(.*?)<\/lap-success>/gs, '<div class="lap-success">$1</div>')
-        .replace(/<lap-section>(.*?)<\/lap-section>/gs, '<div class="lap-section">$1</div>')
-        .replace(/<lap-center>(.*?)<\/lap-center>/gs, '<div class="lap-center">$1</div>')
-        .replace(/<lap-divider\s*\/?>/g, '<hr style="margin:20px 0;" />')
-        .replace(/<lap-spacer\s*\/?>/g, '<div style="height:30px;"></div>')
-        .replace(/<lap-column>(.*?)<\/lap-column>/gs, (_, content) => {
-          const cols = content.match(/<lap-box>(.*?)<\/lap-box>/gs) || [];
+        .replace(/<losa-page>/g, '<div>')
+        .replace(/<\/losa-page>/g, '</div>')
+        .replace(/<losa-header>(.*?)<\/losa-header>/g, '<h1>$1</h1>')
+        .replace(/<losa-subtitle>(.*?)<\/losa-subtitle>/g, '<h2>$1</h2>')
+        .replace(/<losa-footer>(.*?)<\/losa-footer>/g, '<footer style="margin-top:20px;">$1</footer>')
+        .replace(/<losa-text>(.*?)<\/losa-text>/g, '<p>$1</p>')
+        .replace(/<losa-code>(.*?)<\/losa-code>/gs, '<pre><code>$1</code></pre>')
+        .replace(/<losa-html>(.*?)<\/losa-html>/gs, '$1')
+        .replace(/<losa-image src="(.*?)"\s*\/?>/g, '<img src="$1" style="max-width:100%; border-radius:6px;" />')
+        .replace(/<losa-video src="(.*?)"\s*\/?>/g, '<video src="$1" controls width="100%"></video>')
+        .replace(/<losa-youtube src="(.*?)"\s*\/?>/g, '<iframe width="100%" height="300" src="$1" frameborder="0" allowfullscreen></iframe>')
+        .replace(/<losa-embed-website src="(.*?)"\s*\/?>/g, '<iframe src="$1" width="100%" height="400" frameborder="0"></iframe>')
+        .replace(/<losa-box>(.*?)<\/losa-box>/gs, '<div style="border:1px solid #ddd; padding:10px; border-radius:6px;">$1</div>')
+        .replace(/<losa-note>(.*?)<\/losa-note>/gs, '<div class="losa-note">$1</div>')
+        .replace(/<losa-warning>(.*?)<\/losa-warning>/gs, '<div class="losa-warning">$1</div>')
+        .replace(/<losa-success>(.*?)<\/losa-success>/gs, '<div class="losa-success">$1</div>')
+        .replace(/<losa-section>(.*?)<\/losa-section>/gs, '<div class="losa-section">$1</div>')
+        .replace(/<losa-center>(.*?)<\/losa-center>/gs, '<div class="losa-center">$1</div>')
+        .replace(/<losa-divider\s*\/?>/g, '<hr style="margin:20px 0;" />')
+        .replace(/<losa-spacer\s*\/?>/g, '<div style="height:30px;"></div>')
+        .replace(/<losa-column>(.*?)<\/losa-column>/gs, (_, content) => {
+          const cols = content.match(/<losa-box>(.*?)<\/losa-box>/gs) || [];
           return `<div class="columns">${cols.map(c => `<div class="column">${c}</div>`).join('')}</div>`;
         });
 
@@ -269,12 +269,13 @@ ${document.getElementById("output").innerHTML}
       const blob = new Blob([html], { type: "text/html" });
       const a = document.createElement("a");
       a.href = URL.createObjectURL(blob);
-      a.download = "lap-site.html";
+      a.download = "losa-site.html";
       a.click();
     }
 
-    renderLAP();
+    renderlosa();
   </script>
 
 </body>
 </html>
+
